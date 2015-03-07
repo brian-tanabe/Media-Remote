@@ -12,7 +12,6 @@ public class MacOsDependentTestClass {
 
     @BeforeClass
     public static void verifyMacOsOperatingSystem() {
-        String operatingSystemString = System.getProperty("os.name");
-        assertThat("This test needs to be run on OS X", operatingSystemString, containsString("Mac OS X"));
+        assertThat("This test needs to be run on OS X", System.getProperty("os.name"), containsString("Mac OS X"));
     }
 }
