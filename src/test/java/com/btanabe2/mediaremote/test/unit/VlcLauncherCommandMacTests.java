@@ -11,7 +11,7 @@ import static org.springframework.test.util.AssertionErrors.assertEquals;
 public class VlcLauncherCommandMacTests {
 
     @Test
-    public void shouldBeAbleToIssueTheProperVlcLaunchCommand() {
+    public void shouldBeAbleToFormatTheVlcLauncherCommandForOsxProperly() {
         VlcLauncherCommandMac launcher = new VlcLauncherCommandMac("/Applications/VLC.app/Contents/MacOS/VLC");
         assertEquals("Did not generate the correct VLC executable command", "./Applications/VLC.app/Contents/MacOS/VLC -vvv ~/Downloads/Wet\\ Hot\\ American\\ Summer.m4v --fullscreen", launcher.getVlcLaunchCommand());
     }
