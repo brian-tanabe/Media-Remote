@@ -2,7 +2,7 @@ package com.btanabe2.mediaremote.test.helpers;
 
 import org.junit.BeforeClass;
 
-import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.assertThat;
 
 /**
