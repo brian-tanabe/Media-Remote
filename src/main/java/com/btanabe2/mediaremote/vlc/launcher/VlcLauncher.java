@@ -9,10 +9,13 @@ import java.io.*;
  */
 public class VlcLauncher {
 
-    public static void playVideoFile(VlcLauncherCommand launcherCommand) throws IOException {
-        Process tr = Runtime.getRuntime().exec( new String[]{ "cat" } );
-        Writer wr = new OutputStreamWriter( tr.getOutputStream() );
-        BufferedReader rd = new BufferedReader( new InputStreamReader( tr.getInputStream() ) );
+    public static void playVideoFile(VlcLauncherCommand launcherCommand) throws IOException, InterruptedException {
+        Process process = Runtime.getRuntime().exec("time");
+        process.waitFor();
+
+//        Process tr = Runtime.getRuntime().exec( new String[]{ "cat" } );
+        Writer wr = new OutputStreamWriter( process.getOutputStream() );
+        BufferedReader rd = new BufferedReader( new InputStreamReader( process.getInputStream() ) );
         wr.write( "hello, world\n" );
         wr.flush();
         String s = rd.readLine();
