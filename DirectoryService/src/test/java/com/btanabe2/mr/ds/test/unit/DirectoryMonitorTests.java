@@ -32,7 +32,8 @@ public class DirectoryMonitorTests {
 
     @Test
     public void shouldBeAbleToFindMultipleFilesInOneDirectory() {
-
+        monitor.monitorDirectories(videoFileList, new File("./DirectoryService/src/test/resources/test-video-directory/multiple-files/"));
+        assertThat(videoFileList, hasItems(new File("./DirectoryService/src/test/resources/test-video-directory/multiple-files/What.We.Do.In.The.Shadows.2014.HDRip.x264-COX.mkv"), new File("./DirectoryService/src/test/resources/test-video-directory/multiple-files/Standby.2014.720p.WEB-DL.x264.AC3-iFT.mkv")));
     }
 
     @Test
