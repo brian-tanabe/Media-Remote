@@ -10,6 +10,7 @@ import java.util.List;
 
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 /**
  * Created by Brian on 3/7/15.
@@ -37,22 +38,23 @@ public class DirectoryMonitorTests {
     }
 
     @Test
-    public void shouldBeAbleToFindSingleFilesInOneSubdirectory() {
-
+    public void shouldBeAbleToFindMultipleFilesInMultipleSubdirectory() {
+        fail("Not yet implemented");
     }
 
     @Test
     public void shouldBeAbleToFindVideoFilesCompressedAndSplitAsRarFiles() {
-
+        monitor.monitorDirectories(videoFileList, new File("./DirectoryService/src/test/resources/test-video-directory/split-compressed-files/"));
+        assertThat(videoFileList, hasItems(new File("./DirectoryService/src/test/resources/test-video-directory/multiple-files/the.americans.2013.s03e05.720p.hdtv.x264-killers.rar")));
     }
 
     @Test
     public void shouldBeAbleToExcludeNonVideoFiles() {
-
+        fail("Not yet implemented");
     }
 
     @Test
     public void shouldBeAbleToFindNewlyCreatedFiles() {
-
+        fail("Not yet implemented");
     }
 }

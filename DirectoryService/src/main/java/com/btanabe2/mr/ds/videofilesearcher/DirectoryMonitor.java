@@ -29,7 +29,7 @@ public class DirectoryMonitor {
     private void scanDirectory(List<File> videoStore, File directory) {
         videoStore.addAll(FileUtils.listFiles(directory, new IOFileFilter() {
             @Override
-            public boolean accept(File file) {
+            public boolean accept(File file) {  // file filter
                 return true;
             }
 
@@ -37,7 +37,7 @@ public class DirectoryMonitor {
             public boolean accept(File dir, String name) {
                 return true;
             }
-        }, new IOFileFilter() {
+        }, new IOFileFilter() { // directory filter
             @Override
             public boolean accept(File file) {
                 return true;
