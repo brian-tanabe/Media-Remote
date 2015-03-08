@@ -15,6 +15,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.btanabe2.mr.ds.test.fixtures.TestVideoFixture.*;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
@@ -42,30 +43,32 @@ public class DirectoryMonitorTests {
 
     @Test
     public void shouldBeAbleToFindOneFileInOneDirectory() {
-        monitor.monitorDirectories(videoFileList, filter, new File("./DirectoryService/src/test/resources/test-video-directory/single-file/"));
-        assertThat(videoFileList, hasItems(new File("./DirectoryService/src/test/resources/test-video-directory/single-file/Whiplash.2014.720p.WEB-DL.AAC2.0.H264-BHD.mkv")));
+        monitor.monitorDirectories(videoFileList, filter, TEST_VIDEO_SINGLE_FILE_PARENT_DIRECTORY);
+        assertThat(videoFileList, hasItems(TEST_VIDEO_SINGLE_FILE));
     }
 
     @Test
     public void shouldBeAbleToFindMultipleFilesInOneDirectory() {
-        monitor.monitorDirectories(videoFileList, filter, new File("./DirectoryService/src/test/resources/test-video-directory/multiple-files/"));
-        assertThat(videoFileList, hasItems(new File("./DirectoryService/src/test/resources/test-video-directory/multiple-files/What.We.Do.In.The.Shadows.2014.HDRip.x264-COX.mkv"), new File("./DirectoryService/src/test/resources/test-video-directory/multiple-files/Standby.2014.720p.WEB-DL.x264.AC3-iFT.mkv")));
+        monitor.monitorDirectories(videoFileList, filter, TEST_VIDEO_MULTIPLE_FILES_PARENT_DIRECTORY);
+        assertThat(videoFileList, hasItems(TEST_VIDEO_MULTIPLE_FILES_FIRST_FILE, TEST_VIDEO_MULTIPLE_FILES_SECOND_FILE));
     }
 
     @Test
     public void shouldBeAbleToFindMultipleFilesInMultipleSubdirectory() {
-        fail("Not yet implemented");
+        monitor.monitorDirectories(videoFileList, filter, TEST_VIDEO_PARENT_DIRECTORY);
+        assertThat(videoFileList, hasItems(TEST_VIDEO_SINGLE_FILE, TEST_VIDEO_MULTIPLE_FILES_FIRST_FILE, TEST_VIDEO_MULTIPLE_FILES_SECOND_FILE, TEST_VIDEO_MIXED_TYPE_FILE, TEST_VIDEO_SPLIT_COMPRESSED_TYPE_FILE));
     }
 
     @Test
     public void shouldBeAbleToFindVideoFilesCompressedAndSplitAsRarFiles() {
-        monitor.monitorDirectories(videoFileList, filter, new File("./DirectoryService/src/test/resources/test-video-directory/split-compressed-files/"));
-        assertThat(videoFileList, hasItems(new File("./DirectoryService/src/test/resources/test-video-directory/split-compressed-files/The.Americans.2013.S03E05.720p.HDTV.x264-KILLERS/the.americans.2013.s03e05.720p.hdtv.x264-killers.rar")));
+        monitor.monitorDirectories(videoFileList, filter, TEST_VIDEO_SPLIT_COMPRESSED_TYPE_PARENT_DIRECTORY);
+        assertThat(videoFileList, hasItems(TEST_VIDEO_SPLIT_COMPRESSED_TYPE_FILE));
     }
 
     @Test
     public void shouldBeAbleToExcludeNonVideoFiles() {
-        fail("Not yet implemented");
+        monitor.monitorDirectories(videoFileList, filter, TEST_VIDEO_MIXED_FILE_TYPE_PARENT_DIRECTORY);
+        assertThat(videoFileList, hasItems(TEST_VIDEO_MIXED_TYPE_FILE));
     }
 
     @Test
