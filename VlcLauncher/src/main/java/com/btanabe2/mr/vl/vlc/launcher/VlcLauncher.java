@@ -1,6 +1,6 @@
-package vlc.launcher;
+package com.btanabe2.mr.vl.vlc.launcher;
 
-import vlc.commands.VlcLauncherCommand;
+import com.btanabe2.mr.vl.vlc.commands.VlcLauncherCommand;
 
 import java.io.IOException;
 /**

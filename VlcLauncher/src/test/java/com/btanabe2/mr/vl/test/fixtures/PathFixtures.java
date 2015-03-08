@@ -1,4 +1,4 @@
-package test.fixtures;
+package com.btanabe2.mr.vl.test.fixtures;
 
 /**
  * Created by Brian on 3/6/15.

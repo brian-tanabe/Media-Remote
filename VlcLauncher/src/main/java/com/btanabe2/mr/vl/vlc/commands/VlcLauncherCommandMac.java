@@ -1,4 +1,4 @@
-package vlc.commands;
+package com.btanabe2.mr.vl.vlc.commands;
 
 import java.util.Map;
 

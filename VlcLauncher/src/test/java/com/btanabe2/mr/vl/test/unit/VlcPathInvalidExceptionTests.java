@@ -1,10 +1,10 @@
-package test.unit;
+package com.btanabe2.mr.vl.test.unit;
 
+import com.btanabe2.mr.vl.vlc.exceptions.VlcPathInvalidException;
 import org.junit.Test;
-import vlc.exceptions.VlcPathInvalidException;
 
+import static com.btanabe2.mr.vl.test.fixtures.PathFixtures.TEST_VLC_EXECUTABLE_PATH;
 import static junit.framework.TestCase.assertEquals;
-import static test.fixtures.PathFixtures.TEST_VLC_EXECUTABLE_PATH;
 
 /**
  * Created by Brian on 3/6/15.

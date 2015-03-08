@@ -1,4 +1,4 @@
-package test.helpers;
+package com.btanabe2.mr.vl.test.helpers;
 
 import org.junit.BeforeClass;
 

@@ -1,4 +1,4 @@
-package test.fixtures;
+package com.btanabe2.mr.vl.test.fixtures;
 
 import java.util.HashMap;
 import java.util.Map;

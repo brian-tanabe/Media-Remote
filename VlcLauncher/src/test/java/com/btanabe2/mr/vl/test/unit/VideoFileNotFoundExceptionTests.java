@@ -1,7 +1,7 @@
-package test.unit;
+package com.btanabe2.mr.vl.test.unit;
 
+import com.btanabe2.mr.vl.vlc.exceptions.VideoFileNotFoundException;
 import org.junit.Test;
-import vlc.exceptions.VideoFileNotFoundException;
 
 import static org.junit.Assert.assertEquals;
 
