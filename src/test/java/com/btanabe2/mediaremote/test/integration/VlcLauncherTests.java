@@ -8,7 +8,6 @@ import org.junit.Test;
 
 import static com.btanabe2.mediaremote.test.fixtures.PathFixtures.TEST_MOVIE_FILE_PATH;
 import static com.btanabe2.mediaremote.test.fixtures.PathFixtures.TEST_VLC_EXECUTABLE_PATH;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 /**
@@ -19,7 +18,7 @@ public class VlcLauncherTests extends MacOsDependentTestClass {
     @Test
     public void shouldBeAbleToLaunchVlc() {
         try {
-            assertEquals("", VlcLauncher.playVideoFile(new VlcLauncherCommandMac(TEST_VLC_EXECUTABLE_PATH, VlcCommandLineFixtures.getVlcCommandLineArgumentsForVideoFile(TEST_MOVIE_FILE_PATH))));
+            VlcLauncher.playVideoFile(new VlcLauncherCommandMac(TEST_VLC_EXECUTABLE_PATH, VlcCommandLineFixtures.getVlcCommandLineArgumentsForVideoFile(TEST_MOVIE_FILE_PATH)));
         } catch (Exception e) {
             e.printStackTrace();
             fail("Failed to execute test process");
