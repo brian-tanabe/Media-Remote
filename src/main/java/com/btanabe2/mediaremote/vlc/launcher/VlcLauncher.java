@@ -2,8 +2,7 @@ package com.btanabe2.mediaremote.vlc.launcher;
 
 import com.btanabe2.mediaremote.vlc.commands.VlcLauncherCommand;
 
-import java.io.IOException;
-
+import java.io.IOException
 /**
  * Created by Brian on 3/6/15.
  */
