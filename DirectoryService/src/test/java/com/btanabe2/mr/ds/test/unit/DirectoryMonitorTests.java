@@ -7,6 +7,7 @@ import com.btanabe2.mr.ds.videofilesearcher.filters.AviFile;
 import com.btanabe2.mr.ds.videofilesearcher.filters.MkvFile;
 import com.btanabe2.mr.ds.videofilesearcher.filters.Mp4File;
 import com.btanabe2.mr.ds.videofilesearcher.filters.RarFile;
+import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -15,7 +16,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.btanabe2.mr.ds.test.fixtures.TestVideoCreationFixtures.TEST_VIDEO_CREATION_DIRECTORY;
+import static com.btanabe2.mr.ds.test.fixtures.TestVideoCreationFixtures.TEST_VIDEO_CREATION_FILE_PATH;
 import static com.btanabe2.mr.ds.test.fixtures.TestVideoFixture.*;
+import static com.btanabe2.mr.ds.test.helpers.TestFileCreator.createTestFile;
+import static junit.framework.TestCase.assertEquals;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
@@ -33,6 +38,11 @@ public class DirectoryMonitorTests {
         VideoFileExtensionFilterBuilder builder = new VideoFileExtensionFilterBuilder();
         builder.addFilter(new AviFile(), new RarFile(), new MkvFile(), new Mp4File());
         filter = new VideoFileExtensionFilter(builder);
+    }
+
+    @BeforeClass
+    public static void deleteAllTestFilesInTheFileCreationDirectory() {
+        FileUtils.deleteQuietly(TEST_VIDEO_CREATION_FILE_PATH);
     }
 
     @Before
@@ -73,6 +83,15 @@ public class DirectoryMonitorTests {
 
     @Test
     public void shouldBeAbleToFindNewlyCreatedFiles() {
-        fail("Not yet implemented");
+        try {
+            monitor.monitorDirectories(videoFileList, filter, TEST_VIDEO_CREATION_DIRECTORY);
+            assertEquals("The test video was created too soon!", 0, videoFileList.size());
+            this.wait(100);
+            createTestFile(TEST_VIDEO_CREATION_FILE_PATH);
+            assertThat(videoFileList, hasItems(TEST_VIDEO_CREATION_FILE_PATH));
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail("Failed to wait() or create test file");
+        }
     }
 }
